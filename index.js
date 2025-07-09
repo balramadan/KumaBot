@@ -66,7 +66,7 @@ discordClient.on("ready", (c) => {
 
   c.user.setPresence({
     activities: [
-      { name: "Tag @kuma to get started", type: ActivityType.Competing },
+      { name: "Tag @kuma to start the chat", type: ActivityType.Competing },
     ],
     status: "idle",
   });
