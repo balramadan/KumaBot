@@ -1,8 +1,8 @@
 require("dotenv").config();
 // Mengimpor library yang diperlukan
-const { Client, GatewayIntentBits } = require("discord.js");
-const { SessionsClient } = require("@google-cloud/dialogflow-cx");
-const path = require("path");
+const { Client, GatewayIntentBits } = require('discord.js');
+const { SessionsClient } = require('@google-cloud/dialogflow-cx');
+const path = require('path');
 
 const discordToken = process.env.DISCORD_TOKEN;
 const projectId = process.env.GOOGLE_PROJECT_ID;
@@ -30,9 +30,9 @@ const sessionClient = new SessionsClient({
 });
 const discordClient = new Client({
   intents: [
-    GateawayIntentBits.Guilds,
-    GateawayIntentBits.GuildMessages,
-    GateawayIntentBits.MessageContent,
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
   ],
 });
 
