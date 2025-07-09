@@ -3,7 +3,7 @@ console.log("--- [LANGKAH 1] Skrip dimulai.");
 require("dotenv").config();
 console.log("--- [LANGKAH 2] Modul dotenv sudah dimuat.");
 // Mengimpor library yang diperlukan
-const { Client, GatewayIntentBits } = require("discord.js");
+const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
 const { SessionsClient } = require("@google-cloud/dialogflow-cx");
 const path = require("path");
 console.log("--- [LANGKAH 3] Semua modul utama sudah diimpor.");
@@ -79,10 +79,17 @@ try {
 }
 
 // Event handlers
-discordClient.on("ready", () => {
+discordClient.on("ready", (c) => {
   console.log(`🐾 Bot ${discordClient.user.tag} telah online`);
   console.log("🌐 Menghubungkan ke Dialogflow CX...");
   console.log(`🔗 Proyek: ${projectId}, Agen: ${agentId}, Lokasi: ${location}`);
+
+  c.user.setPresence({
+    activities: [
+      { name: "Tag @kuma to get started", type: ActivityType.Competing },
+    ],
+    status: "idle",
+  });
 });
 
 discordClient.on("messageCreate", async (message) => {
